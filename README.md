@@ -1,16 +1,14 @@
 # weather_app
 
-A new Flutter project.
+## Description
 
-## Getting Started
+WeatherApp is a sleek, intuitive weather application built with Flutter. It provides real-time weather updates using a reliable API, delivering accurate forecasts right to your device. With a focus on user experience, it utilizes shared preferences to save your favorite locations and settings for quick access. Whether you're planning your day or a trip, WeatherApp ensures you stay informed and prepared with the latest weather conditions at your fingertips.
 
-This project is a starting point for a Flutter application.
+<img src="https://github.com/user-attachments/assets/2a6cb9b6-c476-444d-96fa-a355cac96d12" height=65% width=22%>
+<img src="https://github.com/user-attachments/assets/86b04e28-94b8-4b42-ba94-639e77a4d8d0" height=65% width=22%>
+<img src="https://github.com/user-attachments/assets/56f9dd0e-2727-4f95-9730-7644926d7cdc" height=65% width=22%>
 
-A few resources to get you started if this is your first Flutter project:
+<a href="https://github.com/Sahilk0809/weather_app/tree/master/lib"> Click here for the source code </a>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+https://github.com/user-attachments/assets/2bf5b6a4-c06d-4abb-910b-c131e27f7a97
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

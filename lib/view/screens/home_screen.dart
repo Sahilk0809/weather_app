@@ -25,9 +25,19 @@ class HomeScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage((weatherProviderTrue.isDay)
-                      ? weatherProviderTrue.sunnyDay
-                      : weatherProviderTrue.night),
+                  image: NetworkImage(
+                    (weatherProviderTrue.isDay)
+                        ? (weatherProviderTrue.weatherModal!.forecastModal
+                                    .forecastDay.first.day.chanceOfRain >
+                                40)
+                            ? weatherProviderTrue.rainy
+                            : weatherProviderTrue.sunnyDay
+                        : (weatherProviderTrue.weatherModal!.forecastModal
+                                    .forecastDay.first.day.chanceOfRain >
+                                40)
+                            ? weatherProviderTrue.nightRain
+                            : weatherProviderTrue.night,
+                  ),
                 ),
               ),
               child: Padding(
@@ -135,7 +145,28 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: height * 0.14,
+                        height: height * 0.12,
+                      ),
+                       Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pushNamed('/f');
+                            },
+                            child: const Text(
+                              'See more',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: height * 0.01,
                       ),
                       Container(
                         padding: const EdgeInsets.all(10),
@@ -227,13 +258,7 @@ class HomeScreen extends StatelessWidget {
                                     width: 170,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: (weatherProviderTrue.weatherModal!
-                                                  .currentModal.is_day ==
-                                              1)
-                                          ? const Color(0xff4E7197)
-                                              .withOpacity(0.8)
-                                          : const Color(0xff223150)
-                                              .withOpacity(0.8),
+                                      color: Colors.black12,
                                     ),
                                     child: Column(
                                       mainAxisAlignment:
@@ -265,13 +290,7 @@ class HomeScreen extends StatelessWidget {
                                     width: width * 0.43,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: (weatherProviderTrue.weatherModal!
-                                                  .currentModal.is_day ==
-                                              1)
-                                          ? const Color(0xff4E7197)
-                                              .withOpacity(0.8)
-                                          : const Color(0xff223150)
-                                              .withOpacity(0.8),
+                                      color: Colors.black12,
                                     ),
                                     child: Column(
                                       mainAxisAlignment:
@@ -347,13 +366,7 @@ class HomeScreen extends StatelessWidget {
                                 height: height * 0.22,
                                 width: width * 0.45,
                                 decoration: BoxDecoration(
-                                    color: (weatherProviderTrue.weatherModal!
-                                                .currentModal.is_day ==
-                                            1)
-                                        ? const Color(0xff4E7197)
-                                            .withOpacity(0.8)
-                                        : const Color(0xff223150)
-                                            .withOpacity(0.8),
+                                    color: Colors.black12,
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(

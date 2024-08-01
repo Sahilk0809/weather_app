@@ -117,13 +117,14 @@ class AstroModal
 
 class DayModal {
   late double maxtemp_c, mintemp_c;
+  late int chanceOfRain;
   late DayConditionModal dayConditionModal;
 
-  DayModal(this.maxtemp_c, this.mintemp_c, this.dayConditionModal);
+  DayModal(this.maxtemp_c, this.mintemp_c, this.dayConditionModal, this.chanceOfRain);
 
   factory DayModal.fromJson(Map m1) {
     return DayModal(m1['maxtemp_c'].toDouble(), m1['mintemp_c'].toDouble(),
-        DayConditionModal.fromJson(m1['condition']));
+        DayConditionModal.fromJson(m1['condition']), m1['daily_chance_of_rain']);
   }
 }
 

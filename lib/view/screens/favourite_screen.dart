@@ -25,51 +25,81 @@ class FavouriteScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(weatherProviderTrue.sunnyDay),
+                  image: NetworkImage(
+                    (weatherProviderTrue.isDay)
+                        ? (weatherProviderTrue.weatherModal!.forecastModal
+                                    .forecastDay.first.day.chanceOfRain >
+                                40)
+                            ? weatherProviderTrue.rainy
+                            : weatherProviderTrue.sunnyDay
+                        : (weatherProviderTrue.weatherModal!.forecastModal
+                                    .forecastDay.first.day.chanceOfRain >
+                                40)
+                            ? weatherProviderTrue.nightRain
+                            : weatherProviderTrue.night,
+                  ),
                 ),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ListView.builder(
-                  itemCount: weatherProviderTrue.favouriteList.length,
-                  itemBuilder: (context, index) {
-                    final name = weatherProviderTrue.favouriteList[index]
-                        .split('-')
-                        .sublist(0, 1)
-                        .join('-');
-                    final status = weatherProviderTrue.favouriteList[index]
-                        .split('-')
-                        .sublist(1, 2)
-                        .join('-');
-                    final temp = weatherProviderTrue.favouriteList[index]
-                        .split('-')
-                        .sublist(2, 3)
-                        .join('-');
-                    final icon = weatherProviderTrue.favouriteList[index]
-                        .split('-')
-                        .sublist(3, 4)
-                        .join('-');
-                    return Card(
-                      color: Colors.transparent,
-                      child: ListTile(
-                        leading: Image.network('http:$icon'),
-                        title: Text(
-                          name,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                        trailing: Text(
-                          status,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                          ),
-                        ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: height * 0.05,
+                    ),
+                    const Text(
+                      'Favourite Cities',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
                       ),
-                    );
-                  },
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: weatherProviderTrue.favouriteList.length,
+                        itemBuilder: (context, index) {
+                          final name = weatherProviderTrue.favouriteList[index]
+                              .split('-')
+                              .sublist(0, 1)
+                              .join('-');
+                          final status = weatherProviderTrue
+                              .favouriteList[index]
+                              .split('-')
+                              .sublist(1, 2)
+                              .join('-');
+                          final temp = weatherProviderTrue.favouriteList[index]
+                              .split('-')
+                              .sublist(2, 3)
+                              .join('-');
+                          final icon = weatherProviderTrue.favouriteList[index]
+                              .split('-')
+                              .sublist(3, 4)
+                              .join('-');
+                          return Card(
+                            color: Colors.transparent,
+                            child: ListTile(
+                              leading: Image.network('http:$icon'),
+                              title: Text(
+                                name,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              trailing: Text(
+                                status,
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
             );

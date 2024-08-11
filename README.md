@@ -12,4 +12,4 @@ WeatherApp is a sleek, intuitive weather application built with Flutter. It prov
 
 <a href="https://github.com/Sahilk0809/weather_app/tree/master/lib"> Click here for the source code </a>
 
-https://github.com/user-attachments/assets/1b51aa94-cf6f-4654-b269-0845236b5d5b
+https://github.com/user-attachments/assets/8b4f0ddc-60fd-4f68-a64e-a895d161fbe9
